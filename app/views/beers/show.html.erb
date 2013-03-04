@@ -1,0 +1,42 @@
+<%- model_class = Beer -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => @beer.brewery + " - " + @beer.name %></h1>
+</div>
+
+<div class="row">
+	<div class="span6">
+		<dl class="dl-horizontal">
+			<dt><strong><%= model_class.human_attribute_name(:name) %>:</strong></dt>
+			<dd><%= @beer.name %></dd>
+			<dt><strong><%= model_class.human_attribute_name(:brewery) %>:</strong></dt>
+			<dd><%= @beer.brewery %></dd>
+			<dt><strong><%= model_class.human_attribute_name(:country) %>:</strong></dt>
+			<dd><%= @beer.country %></dd>
+			<dt><strong><%= model_class.human_attribute_name(:style) %>:</strong></dt>
+			<dd><%= @beer.style %></dd>
+			<dt><strong><%= model_class.human_attribute_name(:score) %>:</strong></dt>
+			<dd><%= @beer.score %></dd>
+			<dt><strong><%= model_class.human_attribute_name(:comment) %>:</strong></dt>
+			<dd><%= @beer.comment %></dd>			
+		</dl>
+	</div>
+	
+	<div class="span6">
+		<img src="/assets/beer-placeholder.png" class="img-polaroid">
+	</div>
+</div>
+<div class="row">
+	<div class="span12">
+		<div class="form-actions">
+		  <%= link_to t('.back', :default => t("helpers.links.back")),
+				      beers_path, :class => 'btn'  %>
+		  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+				      edit_beer_path(@beer), :class => 'btn' %>
+		  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+				      beer_path(@beer),
+				      :method => 'delete',
+				      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+				      :class => 'btn btn-danger' %>
+		</div>
+	</div>
+</div>
